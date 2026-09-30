@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* Design tokens: every color the portal uses lives here.
+   Tailwind turns them into classes like bg-brand, text-ink, border-line. */
+@theme {
+  --color-brand: #c8102e;
+  --color-brand-dark: #9b0c23;
+  --color-ink: #1f2937;
+  --color-muted: #4b5563;
+  --color-surface: #ffffff;
+  --color-page: #f5f6f8;
+  --color-line: #e5e7eb;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --animate-fade-in: fade-in 0.25s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Visible keyboard focus everywhere (accessibility) */
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* Respect users who ask their system to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
